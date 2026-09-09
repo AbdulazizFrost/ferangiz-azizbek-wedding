@@ -368,18 +368,18 @@ body.locked {
   pointer-events: none;
   overflow: hidden;
   z-index: 1;
-  background: radial-gradient(ellipse 85% 65% at 50% 48%, #1f140f 0%, #100b08 45%, #050303 90%, #030202 100%);
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, #120c08 0%, #0a0605 50%, #040303 90%, #020202 100%);
 }
 
 .cover-stage-glow {
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(223, 196, 136, 0.14) 0%, rgba(184, 146, 75, 0.04) 50%, transparent 75%);
-  filter: blur(45px);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(200, 165, 100, 0.06) 0%, transparent 65%);
+  filter: blur(50px);
   pointer-events: none;
 }
 
@@ -433,17 +433,17 @@ body.locked {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
-/* Middle Layer: Golden Botanical Branches (z-index: 2) - Dimmed antique gold tone */
+/* Middle Layer: Golden Botanical Branches (z-index: 2) - Organic Framing */
 .layer-branch-tl {
   z-index: 2;
   top: -15px;
-  left: -25px;
-  width: 86%;
-  max-width: 365px;
-  filter: brightness(0.75) contrast(1.1) drop-shadow(0 8px 25px rgba(0, 0, 0, 0.9));
+  left: -20px;
+  width: 70%;
+  max-width: 285px;
+  filter: brightness(0.70) contrast(1.12) drop-shadow(0 8px 25px rgba(0, 0, 0, 0.92));
   animation: entranceTL 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
              botanicalFloatTL 8s ease-in-out 1.2s infinite alternate;
 }
@@ -452,32 +452,32 @@ body.locked {
   z-index: 2;
   bottom: -15px;
   right: -20px;
-  width: 76%;
-  max-width: 320px;
-  filter: brightness(0.72) contrast(1.1) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.9));
+  width: 64%;
+  max-width: 265px;
+  filter: brightness(0.68) contrast(1.12) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.92));
   animation: entranceBR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
              botanicalFloatBR 9s ease-in-out 1.55s infinite alternate;
 }
 
-/* Foreground Layer: Large Velvet Black Flowers (z-index: 3) - Moody dark velvet tone */
+/* Foreground Layer: Scaled Down Velvet Black Flowers (Framing Edges, 20-25% reduced weight) */
 .layer-flower-tr {
   z-index: 3;
-  top: -25px;
-  right: -40px;
-  width: 98%;
-  max-width: 420px;
-  filter: brightness(0.70) contrast(1.15) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+  top: -32px;
+  right: -30px;
+  width: 74%;
+  max-width: 300px;
+  filter: brightness(0.64) contrast(1.18) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.98));
   animation: entranceTR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
              botanicalFloatTR 8.5s ease-in-out 1.35s infinite alternate;
 }
 
 .layer-flower-bl {
   z-index: 3;
-  bottom: -35px;
-  left: -45px;
-  width: 98%;
-  max-width: 420px;
-  filter: brightness(0.68) contrast(1.15) drop-shadow(0 -15px 35px rgba(0, 0, 0, 0.95));
+  bottom: -48px;
+  left: -46px;
+  width: 76%;
+  max-width: 310px;
+  filter: brightness(0.63) contrast(1.18) drop-shadow(0 -15px 35px rgba(0, 0, 0, 0.98));
   animation: entranceBL 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both,
              botanicalFloatBL 7.5s ease-in-out 1.45s infinite alternate;
 }
@@ -492,16 +492,17 @@ body.locked {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 30px 12px 0 12px;
+  padding: 0 16px;
+  transform: translateY(-14px);
   pointer-events: none;
 }
 
-/* Top Baroque Gold Vignette */
+/* Top Baroque Gold Vignette - Increased by ~12-15% width, comfortable breathing space */
 .cover-vignette-wrap {
   position: relative;
-  width: 230px;
-  max-width: 65%;
-  margin-bottom: 24px;
+  width: 255px;
+  max-width: 70%;
+  margin-bottom: 16px;
   animation: vignetteDrop 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
 }
 
@@ -509,7 +510,7 @@ body.locked {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 2px 14px rgba(223, 196, 136, 0.5));
+  filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.35));
 }
 
 .vignette-flare {
@@ -517,22 +518,22 @@ body.locked {
   top: 36%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: radial-gradient(circle, #ffffff 0%, #ffd700 45%, transparent 75%);
-  box-shadow: 0 0 14px #ffd700, 0 0 28px rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 8px #ffd700, 0 0 14px rgba(255, 215, 0, 0.4);
   animation: flareSparkle 3s ease-in-out infinite;
   pointer-events: none;
 }
 
-/* Couple Names Typography (The Central Visual Hero) */
+/* Couple Names Typography (Protected Center Breathing Zone, Warm Champagne Gold Foiled Look) */
 .cover-names-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   width: 100%;
   animation: namesReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
@@ -540,36 +541,36 @@ body.locked {
 .cover-name-bride,
 .cover-name-groom {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(68px, 19vw, 84px);
-  font-weight: 400;
-  line-height: 0.98;
+  font-size: clamp(72px, 20vw, 88px);
+  font-weight: 500;
+  line-height: 0.94;
   letter-spacing: 0.5px;
   margin: 0;
-  background: linear-gradient(180deg, #fffcf2 0%, #faeac3 25%, #deb65b 60%, #9c731e 100%);
+  background: linear-gradient(180deg, #fffdf7 0%, #faecd2 25%, #deb762 60%, #9e752b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 24px rgba(212, 175, 55, 0.32));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(222, 183, 98, 0.18));
   text-align: center;
 }
 
 .cover-name-amp {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: normal;
-  font-size: clamp(42px, 11.5vw, 52px);
+  font-style: italic;
+  font-size: clamp(40px, 11vw, 48px);
   font-weight: 400;
-  line-height: 1;
-  margin: 4px 0;
-  background: linear-gradient(180deg, #fffbf0 0%, #dfc488 60%, #b8924b 100%);
+  line-height: 0.95;
+  margin: 2px 0 0 0;
+  background: linear-gradient(180deg, #fffdf8 0%, #e0c282 60%, #a27b32 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.85));
 }
 
-/* Bottom Gold Star Divider */
+/* Bottom Gold Star Divider - Elegant, Thin Separator */
 .cover-divider-wrap {
   position: relative;
-  width: 250px;
-  max-width: 70%;
+  width: 235px;
+  max-width: 65%;
   margin-top: 14px;
   margin-bottom: 24px;
   animation: dividerReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
@@ -579,7 +580,7 @@ body.locked {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 1px 8px rgba(223, 196, 136, 0.45));
+  filter: drop-shadow(0 1px 6px rgba(212, 175, 55, 0.32));
 }
 
 .divider-flare {
@@ -587,20 +588,20 @@ body.locked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 11px;
-  height: 11px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: radial-gradient(circle, #ffffff 0%, #ffd700 45%, transparent 75%);
-  box-shadow: 0 0 12px #ffd700, 0 0 22px rgba(255, 215, 0, 0.65);
+  box-shadow: 0 0 6px #ffd700, 0 0 12px rgba(255, 215, 0, 0.4);
   animation: flareSparkle 3s ease-in-out 0.6s infinite;
   pointer-events: none;
 }
 
-/* 3D Luxury Gold Pill Button (Refined Invitation CTA) */
+/* 3D Luxury Gold Pill Button (Polished Champagne Gold Plaque Aesthetic) */
 .cover-btn-container {
   position: relative;
-  width: min(324px, 86%);
-  height: 76px;
+  width: min(296px, 80%);
+  height: 66px;
   pointer-events: auto;
   animation: buttonFloatUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
 }
@@ -610,12 +611,12 @@ body.locked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 104%;
-  height: 104%;
+  width: 100%;
+  height: 100%;
   border-radius: 999px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(255, 225, 140, 0.4) 0%, rgba(223, 196, 136, 0.15) 55%, transparent 75%);
-  box-shadow: 0 0 35px rgba(223, 196, 136, 0.35), 0 0 70px rgba(255, 215, 0, 0.18);
-  filter: blur(8px);
+  background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.18) 0%, transparent 65%);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.18);
+  filter: blur(10px);
   pointer-events: none;
   z-index: 1;
 }
@@ -625,14 +626,14 @@ body.locked {
   z-index: 2;
   width: 100%;
   height: 100%;
-  border: none;
+  border: 1px solid rgba(255, 235, 180, 0.35);
   background: transparent;
   cursor: pointer;
   padding: 0;
   outline: none;
   border-radius: 999px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 28px rgba(212, 175, 55, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.85), 0 0 20px rgba(184, 146, 75, 0.22), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.5), inset 0 -1.5px 2px rgba(40, 25, 10, 0.5);
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               filter 0.25s ease,
@@ -640,12 +641,12 @@ body.locked {
 }
 
 .cover-3d-button:hover {
-  transform: scale(1.03);
-  filter: brightness(1.08);
+  transform: scale(1.025);
+  filter: brightness(1.05);
 }
 
 .cover-3d-button:active {
-  transform: scale(0.97);
+  transform: scale(0.975);
 }
 
 .btn-3d-texture {
@@ -656,7 +657,7 @@ body.locked {
   object-fit: fill;
   pointer-events: none;
   border-radius: 999px;
-  /* Filter removed to prevent alpha fringe halo */
+  filter: brightness(0.88) contrast(1.05);
 }
 
 .btn-content-flex {
@@ -665,48 +666,48 @@ body.locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 15px;
   width: 100%;
   height: 100%;
-  padding: 0 28px;
+  padding: 0 24px;
 }
 
 .btn-heart-icon {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   fill: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.6));
   animation: heartPulse 2.4s ease-in-out infinite;
 }
 
 .btn-labels {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  text-align: left;
-  gap: 2px;
+  text-align: center;
+  gap: 3px;
 }
 
 .btn-lbl-top {
   font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 5px;
-  color: #221201;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 4.2px;
+  color: #1e1003;
   line-height: 1.15;
-  text-shadow: 0 1px 0 rgba(255, 235, 170, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 235, 175, 0.45);
 }
 
 .btn-lbl-sub {
   font-family: 'Cinzel', serif;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 3.6px;
-  color: #2b1602;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 3.0px;
+  color: #261404;
   line-height: 1.15;
-  text-shadow: 0 1px 0 rgba(255, 235, 170, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 235, 175, 0.4);
 }
 
 .btn-light-sweep {

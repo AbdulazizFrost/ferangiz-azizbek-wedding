@@ -255,17 +255,17 @@
     if (!container) return;
 
     container.innerHTML = '';
-    const count = 38;
-    const colors = ['#fff8e7', '#ffd700', '#f5c26b', '#dfc488', '#fff3cc'];
+    const count = 12; // Controlled, sparse luxury stardust
+    const colors = ['#fff8e7', '#ffd700', '#f0c878', '#dfc488'];
     for (let i = 0; i < count; i++) {
       const star = document.createElement('div');
       star.className = 'cover-star-particle';
-      const size = Math.random() * 2.4 + 1.0;
+      const size = Math.random() * 1.4 + 0.8;
       const color = colors[Math.floor(Math.random() * colors.length)];
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
       star.style.background = color;
-      star.style.boxShadow = `0 0 ${size * 3}px ${color}, 0 0 ${size * 6}px rgba(255, 215, 0, 0.6)`;
+      star.style.boxShadow = '0 0 ' + (size * 2) + 'px ' + color + ', 0 0 ' + (size * 3.5) + 'px rgba(212, 175, 55, 0.4)';
       star.style.top = `${Math.random() * 96 + 2}%`;
       star.style.left = `${Math.random() * 96 + 2}%`;
       star.style.animationDuration = `${Math.random() * 4 + 3}s`;
