@@ -1681,9 +1681,9 @@ body.lightbox-locked {
 }
 
 .map-actions-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin-top: 20px;
 }
 
@@ -1709,6 +1709,8 @@ body.lightbox-locked {
 }
 
 .map-btn.google-btn {
+  width: 100%;
+  max-width: 320px;
   background: linear-gradient(135deg, #dfc488 0%, #b8924b 100%);
   color: #0e0a07;
   box-shadow: 0 4px 14px rgba(223, 196, 136, 0.3);
@@ -1719,19 +1721,7 @@ body.lightbox-locked {
   box-shadow: 0 6px 20px rgba(223, 196, 136, 0.5);
 }
 
-.map-btn.yandex-btn {
-  background: rgba(25, 20, 16, 0.85);
-  border: 1px solid rgba(223, 196, 136, 0.45);
-  color: #f5efe6;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-}
 
-.map-btn.yandex-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--c-gold-primary);
-  background: rgba(35, 28, 22, 0.95);
-  color: var(--c-gold-bright);
-}
 
 @media (max-width: 480px) {
   .map-actions-group {
