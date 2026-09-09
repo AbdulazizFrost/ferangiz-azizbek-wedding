@@ -59,24 +59,28 @@
   </div>
 
   <!-- ============================================================
-       1. OPENING COVER SCREEN (Multi-layer Animated Luxury Replica)
+       1. OPENING COVER SCREEN (Multi-layer Luxury Wedding Poster)
        ============================================================ -->
   <div class="cover-wrapper" id="coverScreen">
-    <!-- Atmospheric Ambient Glow -->
-    <div class="cover-atmosphere" aria-hidden="true">
-      <div class="cover-radial-glow"></div>
-      <div class="cover-particles" id="coverParticles"></div>
-    </div>
-
     <!-- Centered Stage Container -->
     <div class="cover-stage" id="coverStage">
-      <!-- 4 Layered Botanical Elements -->
-      <img src="images/branch_tl_hq.png" alt="" class="botanical-layer layer-corner-tl" />
-      <img src="images/flower_tr_hq.png" alt="" class="botanical-layer layer-corner-tr" />
-      <img src="images/flower_bl_hq.png" alt="" class="botanical-layer layer-corner-bl" />
-      <img src="images/branch_br_hq.png" alt="" class="botanical-layer layer-corner-br" />
+      <!-- Atmospheric Smoke & Glow Backdrop -->
+      <div class="cover-stage-backdrop" aria-hidden="true">
+        <div class="cover-stage-glow"></div>
+        <div class="cover-smoke-cloud smoke-top"></div>
+        <div class="cover-smoke-cloud smoke-bottom"></div>
+        <div class="cover-particles-layer" id="coverStageParticles"></div>
+      </div>
 
-      <!-- Center Core Content -->
+      <!-- Middle Depth Layer: Golden Botanical Branches (z-index: 2) -->
+      <img src="images/branch_tl_hq.png" alt="" class="botanical-layer layer-branch-tl" />
+      <img src="images/branch_br_hq.png" alt="" class="botanical-layer layer-branch-br" />
+
+      <!-- Foreground Depth Layer: Large Velvet Black Flowers (z-index: 3) -->
+      <img src="images/flower_tr_hq.png" alt="" class="botanical-layer layer-flower-tr" />
+      <img src="images/flower_bl_hq.png" alt="" class="botanical-layer layer-flower-bl" />
+
+      <!-- Center Hero Content Window (z-index: 10) -->
       <div class="cover-center-content">
         <!-- Top Baroque Gold Vignette with Sparkle Flare -->
         <div class="cover-vignette-wrap">
@@ -97,13 +101,21 @@
           <span class="divider-flare" aria-hidden="true"></span>
         </div>
 
-        <!-- 3D Luxury Gold Pill Button -->
+        <!-- 3D Luxury Gold Pill Button with Ambient Flare -->
         <div class="cover-btn-container">
+          <div class="btn-ambient-flare" aria-hidden="true"></div>
           <button class="cover-3d-button" id="openBtn" onclick="openInvitation()" aria-label="ОТКРЫТЬ ПРИГЛАШЕНИЕ">
             <img src="images/btn_gold_3d.png" alt="" class="btn-3d-texture" />
             <span class="btn-content-flex">
-              <svg class="btn-heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              <svg class="btn-heart-icon" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="btnHeartGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff4d0" />
+                    <stop offset="45%" stop-color="#d4af37" />
+                    <stop offset="100%" stop-color="#69430c" />
+                  </linearGradient>
+                </defs>
+                <path stroke="url(#btnHeartGoldGrad)" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
               </svg>
               <span class="btn-labels">
                 <span class="btn-lbl-top">ОТКРЫТЬ</span>

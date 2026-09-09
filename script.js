@@ -256,20 +256,25 @@
   }
 
   function initCoverParticles() {
-    const container = document.getElementById('coverParticles');
+    const container = document.getElementById('coverStageParticles') || document.getElementById('coverParticles');
     if (!container) return;
 
-    const count = 24;
+    container.innerHTML = '';
+    const count = 38;
+    const colors = ['#fff8e7', '#ffd700', '#f5c26b', '#dfc488', '#fff3cc'];
     for (let i = 0; i < count; i++) {
       const star = document.createElement('div');
       star.className = 'cover-star-particle';
-      const size = Math.random() * 2.5 + 1.2;
+      const size = Math.random() * 2.4 + 1.0;
+      const color = colors[Math.floor(Math.random() * colors.length)];
       star.style.width = `${size}px`;
       star.style.height = `${size}px`;
+      star.style.background = color;
+      star.style.boxShadow = `0 0 ${size * 3}px ${color}, 0 0 ${size * 6}px rgba(255, 215, 0, 0.6)`;
       star.style.top = `${Math.random() * 96 + 2}%`;
       star.style.left = `${Math.random() * 96 + 2}%`;
-      star.style.animationDuration = `${Math.random() * 4 + 3.5}s`;
-      star.style.animationDelay = `${Math.random() * 4}s`;
+      star.style.animationDuration = `${Math.random() * 4 + 3}s`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
       container.appendChild(star);
     }
   }
