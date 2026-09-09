@@ -433,16 +433,17 @@ body.locked {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
+  opacity: 0.85;
 }
 
-/* Middle Layer: Golden Botanical Branches (z-index: 2) */
+/* Middle Layer: Golden Botanical Branches (z-index: 2) - Dimmed antique gold tone */
 .layer-branch-tl {
   z-index: 2;
   top: -15px;
   left: -25px;
   width: 86%;
   max-width: 365px;
-  filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.8));
+  filter: brightness(0.75) contrast(1.1) drop-shadow(0 8px 25px rgba(0, 0, 0, 0.9));
   animation: entranceTL 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
              botanicalFloatTL 8s ease-in-out 1.2s infinite alternate;
 }
@@ -453,19 +454,19 @@ body.locked {
   right: -20px;
   width: 76%;
   max-width: 320px;
-  filter: drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.8));
+  filter: brightness(0.72) contrast(1.1) drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.9));
   animation: entranceBR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
              botanicalFloatBR 9s ease-in-out 1.55s infinite alternate;
 }
 
-/* Foreground Layer: Large Velvet Black Flowers (z-index: 3) */
+/* Foreground Layer: Large Velvet Black Flowers (z-index: 3) - Moody dark velvet tone */
 .layer-flower-tr {
   z-index: 3;
   top: -25px;
   right: -40px;
   width: 98%;
   max-width: 420px;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95)) drop-shadow(0 4px 15px rgba(223, 196, 136, 0.15));
+  filter: brightness(0.70) contrast(1.15) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
   animation: entranceTR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
              botanicalFloatTR 8.5s ease-in-out 1.35s infinite alternate;
 }
@@ -476,7 +477,7 @@ body.locked {
   left: -45px;
   width: 98%;
   max-width: 420px;
-  filter: drop-shadow(0 -15px 35px rgba(0, 0, 0, 0.95)) drop-shadow(0 -4px 15px rgba(223, 196, 136, 0.15));
+  filter: brightness(0.68) contrast(1.15) drop-shadow(0 -15px 35px rgba(0, 0, 0, 0.95));
   animation: entranceBL 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both,
              botanicalFloatBL 7.5s ease-in-out 1.45s infinite alternate;
 }

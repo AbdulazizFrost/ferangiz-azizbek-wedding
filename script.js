@@ -66,12 +66,7 @@
     }, 350);
   };
 
-  // Also trigger open when clicking anywhere on cover card
-  if (coverScreen) {
-    coverScreen.addEventListener('click', (e) => {
-      openInvitation();
-    });
-  }
+  // NOTE: Open only via the dedicated #openBtn button, not by clicking anywhere on the cover screen
 
   /* --------------------------------------------------------------------------
      2. MUSIC PLAYER TOGGLE
