@@ -59,15 +59,61 @@
   </div>
 
   <!-- ============================================================
-       1. OPENING COVER SCREEN (Matching Reference Image Exactly)
+       1. OPENING COVER SCREEN (Crafted from Downloaded Materials)
        ============================================================ -->
   <div class="cover-wrapper" id="coverScreen">
-    <div class="cover-stage">
-      <img src="images/cover_full.png" alt="Ferangiz &amp; Azizbek — Nikoh to‘yi" class="cover-bg-image" />
-      
-      <!-- Interactive Clickable Hotspot with Enhanced Glowing Pulse -->
-      <button class="cover-interactive-btn" id="openBtn" onclick="openInvitation()" aria-label="ОТКРЫТЬ ПРИГЛАШЕНИЕ">
-        <span class="btn-glow-aura"></span>
+    <!-- Botanical Corner Accents from User Materials -->
+    <div class="botanical-decor corner-tl" aria-hidden="true">
+      <img src="images/botanical_cluster_tl.png" alt="" />
+    </div>
+    <div class="botanical-decor corner-tr" aria-hidden="true">
+      <img src="images/botanical_branch_tr.png" alt="" />
+    </div>
+    <div class="botanical-decor corner-bl" aria-hidden="true">
+      <img src="images/botanical_flower_bl.png" alt="" />
+    </div>
+    <div class="botanical-decor corner-br" aria-hidden="true">
+      <img src="images/botanical_branch_br.png" alt="" />
+    </div>
+
+    <!-- Center Stage Content -->
+    <div class="cover-content-stage">
+      <!-- Top Vignette Flourish -->
+      <div class="cover-top-vignette">
+        <img src="images/vignette_gold.png" alt="Ornate Vignette" class="vignette-art-img" />
+      </div>
+
+      <!-- Couple Names -->
+      <div class="cover-names-block">
+        <div class="c-name bride">Ferangiz</div>
+        <div class="c-amp">&amp;</div>
+        <div class="c-name groom">Azizbek</div>
+      </div>
+
+      <!-- Center Divider Line -->
+      <div class="cover-divider-row">
+        <img src="images/divider_gold.png" alt="Divider" class="divider-art-img" />
+      </div>
+
+      <!-- 3D Gold Action Button (Crafted from Downloaded Asset) -->
+      <button class="cover-3d-action-btn" id="openBtn" onclick="openInvitation()" aria-label="ОТКРЫТЬ ПРИГЛАШЕНИЕ">
+        <img src="images/btn_gold_3d.png" alt="" class="btn-3d-texture" />
+        <div class="btn-face-content">
+          <svg class="btn-heart-svg" viewBox="0 0 24 24" fill="none" stroke="url(#goldHeartGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="goldHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff8e0" />
+                <stop offset="45%" stop-color="#e2c070" />
+                <stop offset="100%" stop-color="#8a5c18" />
+              </linearGradient>
+            </defs>
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <div class="btn-label-stack">
+            <span class="btn-txt-row1">ОТКРЫТЬ</span>
+            <span class="btn-txt-row2">ПРИГЛАШЕНИЕ</span>
+          </div>
+        </div>
         <span class="btn-shimmer-sweep"></span>
       </button>
     </div>
