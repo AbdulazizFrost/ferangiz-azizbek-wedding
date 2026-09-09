@@ -1354,28 +1354,34 @@ body.lightbox-locked {
 }
 
 /* ==========================================================================
-   PHOTO GALLERY SECTION (3 CLIENT PHOTOS)
+   PHOTO GALLERY SECTION (3 CLIENT PHOTOS: 1 TOP + 2 DUO SIDE-BY-SIDE ON ALL DEVICES)
    ========================================================================== */
 
 .gallery-mosaic {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-top: 24px;
+  gap: clamp(10px, 2.5vw, 16px);
+  margin-top: clamp(16px, 3vh, 24px);
+  width: 100%;
 }
 
 .gallery-item {
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: clamp(12px, 3vw, 16px);
   overflow: hidden;
   position: relative;
   background: var(--c-bg-card);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  touch-action: manipulation;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 
 .gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(223, 196, 136, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 196, 136, 0.25);
+}
+
+.gallery-item:active {
+  transform: scale(0.98);
 }
 
 .photo-frame {
@@ -1383,47 +1389,71 @@ body.lightbox-locked {
   width: 100%;
   overflow: hidden;
   border: 1px solid var(--c-gold-border);
-  border-radius: 16px;
+  border-radius: clamp(12px, 3vw, 16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.photo-frame img {
+.featured-photo .photo-frame img {
   width: 100%;
   height: auto;
+  aspect-ratio: 4 / 5;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Secondary Photos Duo - STRICTLY 2-COLUMN GRID ON ALL DEVICES */
+.gallery-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(8px, 2.2vw, 14px);
+  width: 100%;
+}
+
+.gallery-duo .gallery-item {
+  width: 100%;
+}
+
+.gallery-duo .photo-frame img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
   display: block;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .gallery-item:hover .photo-frame img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
-/* Jewel corners on photos */
+/* Jewel corners on photos - matching user reference */
 .jewel-corner {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: clamp(10px, 2.5vw, 14px);
+  height: clamp(10px, 2.5vw, 14px);
   border: 2px solid var(--c-gold-primary);
   z-index: 3;
   pointer-events: none;
 }
 
-.jewel-corner.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-.jewel-corner.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-.jewel-corner.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-.jewel-corner.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.jewel-corner.top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.jewel-corner.top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.jewel-corner.bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.jewel-corner.bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; }
 
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(7, 5, 5, 0.75) 100%);
+  background: linear-gradient(180deg, transparent 60%, rgba(7, 5, 5, 0.65) 100%);
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  padding: 20px;
+  justify-content: flex-end;
+  padding: 10px;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 2;
+  pointer-events: none;
 }
 
 .gallery-item:hover .photo-overlay {
@@ -1433,31 +1463,18 @@ body.lightbox-locked {
 .zoom-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: rgba(18, 14, 12, 0.88);
   border: 1px solid rgba(223, 196, 136, 0.5);
   color: #fff2d2;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 1px;
-  padding: 8px 16px;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
   border-radius: 999px;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-duo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-@media (max-width: 500px) {
-  .gallery-duo {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
 }
 
 /* ==========================================================================
