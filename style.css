@@ -51,14 +51,25 @@ body {
   background-attachment: fixed;
   color: var(--c-text-primary);
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   line-height: 1.6;
+  position: relative;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body.locked {
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
+  touch-action: none;
+}
+
+body.lightbox-locked {
+  overflow: hidden;
+  touch-action: none;
 }
 
 /* ==========================================================================
@@ -67,8 +78,8 @@ body.locked {
 
 .taklivo-unpaid-watermark {
   position: fixed;
-  top: 14px;
-  right: 14px;
+  top: max(14px, env(safe-area-inset-top, 14px));
+  right: max(14px, env(safe-area-inset-right, 14px));
   z-index: 10000;
   background: rgba(18, 14, 12, 0.88);
   border: 1px solid rgba(223, 196, 136, 0.4);
@@ -182,21 +193,23 @@ body.locked {
 
 .vinyl-player-widget {
   position: fixed;
-  bottom: 80px;
-  left: 18px;
+  bottom: max(78px, calc(env(safe-area-inset-bottom, 0px) + 76px));
+  left: max(16px, env(safe-area-inset-left, 16px));
   z-index: 9998;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(18, 14, 12, 0.88);
-  border: 1px solid rgba(223, 196, 136, 0.35);
-  padding: 7px 14px 7px 8px;
+  background: rgba(18, 14, 12, 0.92);
+  border: 1px solid rgba(223, 196, 136, 0.38);
+  padding: 6px 14px 6px 6px;
+  min-height: 44px;
   border-radius: 999px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 15px rgba(223, 196, 136, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(223, 196, 136, 0.22);
   cursor: pointer;
   user-select: none;
+  touch-action: manipulation;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -206,6 +219,10 @@ body.locked {
               transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
               border-color 0.3s ease,
               box-shadow 0.3s ease;
+}
+
+.vinyl-player-widget:active {
+  transform: scale(0.96);
 }
 
 .vinyl-player-widget.visible {
@@ -342,7 +359,9 @@ body.locked {
 .cover-stage {
   position: relative;
   width: 100vw;
+  width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -354,7 +373,7 @@ body.locked {
 @media (min-width: 501px) {
   .cover-stage {
     width: min(100vw - 32px, 420px);
-    height: min(100vh - 40px, 880px);
+    height: min(100vh - 40px, 100dvh - 40px, 880px);
     aspect-ratio: 390 / 844;
     border-radius: 24px;
     box-shadow: 0 30px 100px rgba(0, 0, 0, 0.98), 0 0 0 1px rgba(223, 196, 136, 0.18);
@@ -826,6 +845,78 @@ body.locked {
 @keyframes starTwinkle {
   0%, 100% { opacity: 0.15; transform: scale(0.6) translateY(0); }
   50% { opacity: 0.85; transform: scale(1.2) translateY(-10px); }
+}
+
+
+/* Adaptive Cover for Short Viewports (e.g. iPhone SE 568px/667px height) */
+@media (max-height: 700px) {
+  .cover-center-content {
+    transform: translateY(-8px);
+  }
+  .cover-vignette-wrap {
+    width: min(205px, 58vw);
+    margin-bottom: 12px;
+  }
+  .cover-name-bride,
+  .cover-name-groom {
+    font-size: clamp(48px, min(16vw, 8.5vh), 64px);
+    line-height: 0.94;
+  }
+  .cover-name-amp {
+    font-size: clamp(28px, min(9vw, 4.5vh), 36px);
+    margin: 1px 0;
+  }
+  .cover-divider-wrap {
+    width: min(190px, 55vw);
+    margin-top: 10px;
+    margin-bottom: 16px;
+  }
+  .cover-btn-container {
+    width: min(270px, 78vw);
+    height: 58px;
+  }
+  .btn-lbl-top {
+    font-size: 12px;
+    letter-spacing: 3.5px;
+  }
+  .btn-lbl-sub {
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+  }
+  .btn-heart-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .layer-flower-tr {
+    width: 65%;
+    max-width: 240px;
+    top: -35px;
+    right: -30px;
+  }
+  .layer-flower-bl {
+    width: 66%;
+    max-width: 250px;
+    bottom: -45px;
+    left: -40px;
+  }
+}
+
+/* Adaptive Cover for Ultra-Narrow Viewports (<= 350px width) */
+@media (max-width: 350px) {
+  .cover-name-bride,
+  .cover-name-groom {
+    font-size: clamp(46px, 16vw, 56px);
+  }
+  .cover-vignette-wrap {
+    width: min(190px, 60vw);
+  }
+  .cover-divider-wrap {
+    width: min(180px, 55vw);
+  }
+  .cover-btn-container {
+    width: min(260px, 84vw);
+    height: 56px;
+  }
 }
 
 /* ==========================================================================
@@ -1425,21 +1516,29 @@ body.locked {
 }
 
 .lightbox-close {
-  position: absolute;
-  top: -46px;
-  right: 0;
-  background: rgba(20, 15, 12, 0.8);
-  border: 1px solid rgba(223, 196, 136, 0.4);
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top, 16px));
+  right: max(16px, env(safe-area-inset-right, 16px));
+  background: rgba(20, 15, 12, 0.85);
+  border: 1px solid rgba(223, 196, 136, 0.45);
   color: #fff;
-  font-size: 18px;
-  width: 36px;
-  height: 36px;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
+  z-index: 10005;
   transition: all 0.2s ease;
+}
+
+.lightbox-close:active {
+  transform: scale(0.92);
 }
 
 .lightbox-close:hover {
@@ -1577,13 +1676,19 @@ body.locked {
   justify-content: center;
   gap: 8px;
   padding: 12px 16px;
+  min-height: 46px;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   text-decoration: none;
+  touch-action: manipulation;
   transition: all 0.25s ease;
   letter-spacing: 0.5px;
+}
+
+.map-btn:active {
+  transform: scale(0.97);
 }
 
 .map-btn.google-btn {

@@ -53,6 +53,12 @@
     // 2. Animate cover opening
     if (coverScreen) {
       coverScreen.classList.add('opened');
+      setTimeout(() => {
+        // Hide from compositor after smooth lift animation
+        if (coverScreen.classList.contains('opened')) {
+          coverScreen.style.display = 'none';
+        }
+      }, 1000);
     }
 
     // 3. Unlock body scroll
@@ -151,6 +157,7 @@
   window.closeLightbox = function () {
     if (lightboxModal) {
       lightboxModal.classList.remove('active');
+      document.body.classList.remove('lightbox-locked');
     }
   };
 
@@ -214,15 +221,22 @@
     const blocks = document.querySelectorAll('.reveal-block');
     if (!blocks.length) return;
 
+    // If IntersectionObserver is not supported, activate immediately
+    if (!('IntersectionObserver' in window)) {
+      blocks.forEach(b => b.classList.add('active'));
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px 80px 0px'
     });
 
     blocks.forEach(b => observer.observe(b));
