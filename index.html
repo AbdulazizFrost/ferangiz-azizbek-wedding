@@ -59,16 +59,61 @@
   </div>
 
   <!-- ============================================================
-       1. OPENING COVER SCREEN (Authentic Luxury Replica)
+       1. OPENING COVER SCREEN (Multi-layer Animated Luxury Replica)
        ============================================================ -->
   <div class="cover-wrapper" id="coverScreen">
-    <div class="cover-stage">
-      <img src="images/cover_full.png" alt="Ferangiz &amp; Azizbek — Nikoh to‘yi" class="cover-bg-image" />
-      
-      <!-- Interactive Touch Hotspot directly over the Gold Button -->
-      <button class="cover-interactive-btn" id="openBtn" onclick="openInvitation()" aria-label="ОТКРЫТЬ ПРИГЛАШЕНИЕ">
-        <span class="btn-shimmer-sweep"></span>
-      </button>
+    <!-- Atmospheric Ambient Glow -->
+    <div class="cover-atmosphere" aria-hidden="true">
+      <div class="cover-radial-glow"></div>
+      <div class="cover-particles" id="coverParticles"></div>
+    </div>
+
+    <!-- Centered Stage Container -->
+    <div class="cover-stage" id="coverStage">
+      <!-- 4 Layered Botanical Elements -->
+      <img src="images/branch_tl_hq.png" alt="" class="botanical-layer layer-corner-tl" />
+      <img src="images/flower_tr_hq.png" alt="" class="botanical-layer layer-corner-tr" />
+      <img src="images/flower_bl_hq.png" alt="" class="botanical-layer layer-corner-bl" />
+      <img src="images/branch_br_hq.png" alt="" class="botanical-layer layer-corner-br" />
+
+      <!-- Center Core Content -->
+      <div class="cover-center-content">
+        <!-- Top Baroque Gold Vignette with Sparkle Flare -->
+        <div class="cover-vignette-wrap">
+          <img src="images/vignette_top.png" alt="" class="cover-vignette-img" />
+          <span class="vignette-flare" aria-hidden="true"></span>
+        </div>
+
+        <!-- Couple Names -->
+        <div class="cover-names-wrap">
+          <h1 class="cover-name-bride">Ferangiz</h1>
+          <span class="cover-name-amp">&amp;</span>
+          <h1 class="cover-name-groom">Azizbek</h1>
+        </div>
+
+        <!-- Gold Horizontal Star Divider -->
+        <div class="cover-divider-wrap">
+          <img src="images/divider_bottom.png" alt="" class="cover-divider-img" />
+          <span class="divider-flare" aria-hidden="true"></span>
+        </div>
+
+        <!-- 3D Luxury Gold Pill Button -->
+        <div class="cover-btn-container">
+          <button class="cover-3d-button" id="openBtn" onclick="openInvitation()" aria-label="ОТКРЫТЬ ПРИГЛАШЕНИЕ">
+            <img src="images/btn_gold_3d.png" alt="" class="btn-3d-texture" />
+            <span class="btn-content-flex">
+              <svg class="btn-heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span class="btn-labels">
+                <span class="btn-lbl-top">ОТКРЫТЬ</span>
+                <span class="btn-lbl-sub">ПРИГЛАШЕНИЕ</span>
+              </span>
+            </span>
+            <span class="btn-light-sweep" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

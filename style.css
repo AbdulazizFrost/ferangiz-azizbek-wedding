@@ -309,7 +309,7 @@ body.locked {
 }
 
 /* ==========================================================================
-   1. COVER SCREEN (EXACT VISUAL REPLICA OF USER REFERENCE IMAGE)
+   1. COVER SCREEN (MULTI-LAYER ANIMATED LUXURY REPLICA)
    ========================================================================== */
 
 .cover-wrapper {
@@ -322,82 +322,430 @@ body.locked {
   justify-content: center;
   overflow: hidden;
   padding: 10px 10px 85px 10px;
-  transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
-              visibility 0.85s;
+  transition: opacity 0.95s cubic-bezier(0.77, 0, 0.175, 1), 
+              transform 0.95s cubic-bezier(0.77, 0, 0.175, 1),
+              visibility 0.95s;
 }
 
 .cover-wrapper.opened {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-60px) scale(0.98);
+  transform: translateY(-80px) scale(0.98);
   pointer-events: none;
 }
 
+/* Atmospheric Glow & Background Lighting */
+.cover-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cover-radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(223, 196, 136, 0.16) 0%, rgba(184, 146, 75, 0.05) 45%, transparent 75%);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.cover-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cover-star-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff8df;
+  box-shadow: 0 0 6px #f7d58a, 0 0 12px rgba(255, 215, 0, 0.6);
+  pointer-events: none;
+  animation: coverStarTwinkle linear infinite;
+}
+
+@keyframes coverStarTwinkle {
+  0%, 100% { opacity: 0.15; transform: translateY(0) scale(0.7); }
+  50% { opacity: 0.95; transform: translateY(-8px) scale(1.25); }
+}
+
+/* Stage Card (Mobile portrait frame) */
 .cover-stage {
   position: relative;
-  width: min(100vw - 20px, calc((100vh - 100px) * (381 / 675)));
-  height: min(calc(100vh - 100px), calc((100vw - 20px) * (675 / 381)));
-  max-width: 430px;
+  width: min(100vw - 20px, 430px);
+  height: min(calc(100vh - 100px), 890px);
+  aspect-ratio: 9 / 18.5;
+  background: radial-gradient(ellipse at 50% 46%, #1c1410 0%, #0d0908 55%, #050303 100%);
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
-  border-radius: 18px;
-  overflow: hidden;
+  box-shadow: 0 25px 75px rgba(0, 0, 0, 0.96), 0 0 0 1px rgba(223, 196, 136, 0.2);
   user-select: none;
+  z-index: 2;
 }
 
-.cover-bg-image {
+@media (max-width: 480px) {
+  .cover-wrapper {
+    padding: 0 0 75px 0;
+  }
+  .cover-stage {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Layered Botanical Corners */
+.botanical-layer {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.layer-corner-tl {
+  top: -10px;
+  left: -10px;
+  width: 62%;
+  max-width: 275px;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.8));
+  animation: entranceTL 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
+             botanicalSwayTL 8s ease-in-out 1.2s infinite alternate;
+}
+
+.layer-corner-tr {
+  top: -10px;
+  right: -10px;
+  width: 66%;
+  max-width: 290px;
+  filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.85));
+  animation: entranceTR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both,
+             botanicalSwayTR 8.5s ease-in-out 1.35s infinite alternate;
+}
+
+.layer-corner-bl {
+  bottom: -10px;
+  left: -10px;
+  width: 62%;
+  max-width: 275px;
+  filter: drop-shadow(0 -6px 22px rgba(0, 0, 0, 0.85));
+  animation: entranceBL 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both,
+             botanicalSwayBL 7.5s ease-in-out 1.45s infinite alternate;
+}
+
+.layer-corner-br {
+  bottom: -10px;
+  right: -10px;
+  width: 55%;
+  max-width: 250px;
+  filter: drop-shadow(0 -6px 20px rgba(0, 0, 0, 0.8));
+  animation: entranceBR 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
+             botanicalSwayBR 9s ease-in-out 1.55s infinite alternate;
+}
+
+/* Center Core Content */
+.cover-center-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px 40px 20px;
+  pointer-events: none;
+}
+
+/* Top Baroque Gold Vignette */
+.cover-vignette-wrap {
+  position: relative;
+  width: 190px;
+  max-width: 58%;
+  margin-bottom: 24px;
+  animation: vignetteDrop 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.cover-vignette-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 14px rgba(223, 196, 136, 0.5));
+}
+
+.vignette-flare {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #ffd700 45%, rgba(212, 175, 55, 0) 75%);
+  box-shadow: 0 0 14px #ffd700, 0 0 28px rgba(255, 215, 0, 0.7);
+  animation: flareSparkle 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Couple Names Typography */
+.cover-names-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  animation: namesReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.cover-name-bride,
+.cover-name-groom {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(48px, 11.5vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.8px;
+  margin: 0;
+  background: linear-gradient(180deg, #fffef9 0%, #f9e9c2 30%, #dfc488 65%, #aa8022 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 18px rgba(212, 175, 55, 0.38));
+  text-align: center;
+}
+
+.cover-name-amp {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(34px, 8vw, 44px);
+  font-weight: 300;
+  line-height: 1;
+  margin: 6px 0;
+  background: linear-gradient(180deg, #fff9e6 0%, #dfc488 60%, #b8924b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Bottom Gold Star Divider */
+.cover-divider-wrap {
+  position: relative;
+  width: 260px;
+  max-width: 82%;
+  margin-bottom: 38px;
+  animation: dividerReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.cover-divider-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 10px rgba(223, 196, 136, 0.45));
+}
+
+.divider-flare {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #ffd700 45%, rgba(212, 175, 55, 0) 75%);
+  box-shadow: 0 0 12px #ffd700, 0 0 24px rgba(255, 215, 0, 0.6);
+  animation: flareSparkle 3s ease-in-out 0.6s infinite;
+  pointer-events: none;
+}
+
+/* 3D Luxury Gold Pill Button */
+.cover-btn-container {
+  position: relative;
+  width: min(335px, 88%);
+  height: 76px;
+  pointer-events: auto;
+  animation: buttonFloatUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+.cover-3d-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border-radius: 999px;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.25s ease;
+}
+
+.cover-3d-button:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.cover-3d-button:active {
+  transform: scale(0.97);
+}
+
+.btn-3d-texture {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: fill;
-  display: block;
-  user-select: none;
   pointer-events: none;
-}
-
-/* The interactive touch hotspot aligned 100% to the gold button */
-.cover-interactive-btn {
-  position: absolute;
-  top: 65.48%;
-  left: 4.46%;
-  width: 92.13%;
-  height: 10.67%;
   border-radius: 999px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  overflow: hidden;
-  box-shadow: none;
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
 }
 
-.cover-interactive-btn:hover {
-  transform: scale(1.02);
-  box-shadow: 
-    0 0 35px rgba(255, 225, 140, 0.65),
-    inset 0 0 15px rgba(255, 255, 255, 0.35);
+.btn-content-flex {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 0 28px;
 }
 
-.cover-interactive-btn:active {
-  transform: scale(0.98);
+.btn-heart-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: #2b1802;
+  stroke-width: 2.3;
+  filter: drop-shadow(0 1px 1px rgba(255, 245, 204, 0.85));
+  animation: heartPulse 2.4s ease-in-out infinite;
 }
 
-/* Light shimmer sweep across button */
-.btn-shimmer-sweep {
+.btn-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  gap: 2px;
+}
+
+.btn-lbl-top {
+  font-family: 'Cinzel', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 4.5px;
+  color: #261601;
+  line-height: 1.15;
+  text-shadow: 0 1px 0 rgba(255, 245, 204, 0.95);
+}
+
+.btn-lbl-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3.2px;
+  color: #3b2406;
+  line-height: 1.15;
+  text-shadow: 0 1px 0 rgba(255, 245, 204, 0.85);
+}
+
+.btn-light-sweep {
   position: absolute;
   top: 0;
   left: -100%;
-  width: 60%;
+  width: 50%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
   transform: skewX(-25deg);
-  animation: shimmerSweep 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 999px;
+  overflow: hidden;
   pointer-events: none;
+  animation: shimmerSweep 3.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   ENTRANCE & AMBIENT KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes entranceTL {
+  from { opacity: 0; transform: translate(-30px, -30px) scale(0.95); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes entranceTR {
+  from { opacity: 0; transform: translate(30px, -30px) scale(0.95); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes entranceBL {
+  from { opacity: 0; transform: translate(-30px, 30px) scale(0.95); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes entranceBR {
+  from { opacity: 0; transform: translate(30px, 30px) scale(0.95); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes botanicalSwayTL {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(3px, 3px) rotate(0.8deg); }
+}
+
+@keyframes botanicalSwayTR {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-3px, 3px) rotate(-0.8deg); }
+}
+
+@keyframes botanicalSwayBL {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(3px, -3px) rotate(-0.6deg); }
+}
+
+@keyframes botanicalSwayBR {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-3px, -3px) rotate(0.6deg); }
+}
+
+@keyframes vignetteDrop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes namesReveal {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dividerReveal {
+  from { opacity: 0; transform: scaleX(0.85); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes buttonFloatUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flareSparkle {
+  0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(0.7); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
 }
 
 @keyframes shimmerSweep {

@@ -255,6 +255,25 @@
     }
   }
 
+  function initCoverParticles() {
+    const container = document.getElementById('coverParticles');
+    if (!container) return;
+
+    const count = 24;
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'cover-star-particle';
+      const size = Math.random() * 2.5 + 1.2;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 96 + 2}%`;
+      star.style.left = `${Math.random() * 96 + 2}%`;
+      star.style.animationDuration = `${Math.random() * 4 + 3.5}s`;
+      star.style.animationDelay = `${Math.random() * 4}s`;
+      container.appendChild(star);
+    }
+  }
+
   /* --------------------------------------------------------------------------
      INITIALIZATION
      -------------------------------------------------------------------------- */
@@ -262,6 +281,7 @@
     initCountdown();
     initScrollReveal();
     initStardust();
+    initCoverParticles();
   });
 
 })();
