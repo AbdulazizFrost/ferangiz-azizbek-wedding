@@ -564,9 +564,11 @@ body.lightbox-locked {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(72px, 20vw, 88px);
   font-weight: 500;
-  line-height: 0.94;
+  line-height: 1.12;
   letter-spacing: 0.5px;
   margin: 0;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.12em;
   background: linear-gradient(180deg, #fffdf7 0%, #faecd2 25%, #deb762 60%, #9e752b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -862,7 +864,9 @@ body.lightbox-locked {
   .cover-name-bride,
   .cover-name-groom {
     font-size: clamp(48px, min(16vw, 8.5vh), 64px);
-    line-height: 0.94;
+    line-height: 1.12;
+    padding-bottom: 0.18em;
+    margin-bottom: -0.12em;
   }
   .cover-name-amp {
     font-size: clamp(28px, min(9vw, 4.5vh), 36px);
