@@ -1859,3 +1859,186 @@ body.lightbox-locked {
   color: var(--c-gold-dark);
   margin-top: 12px;
 }
+
+/* ==========================================================================
+   24H EXPIRED & UNPAID NOTICE OVERLAYS (BUYURTMA #12)
+   ========================================================================== */
+
+.taklivo-expired-notice-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: linear-gradient(135deg, rgba(165, 15, 15, 0.96) 0%, rgba(105, 10, 10, 0.98) 100%);
+  border-bottom: 2px solid #ff4d4d;
+  box-shadow: 0 4px 25px rgba(220, 20, 20, 0.45), 0 2px 10px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: max(8px, env(safe-area-inset-top, 8px)) 14px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+  animation: noticeSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+}
+
+@keyframes noticeSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.expired-notice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.expired-badge-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.expired-pulse-icon {
+  font-size: 13px;
+  line-height: 1;
+  animation: pulseWarn 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseWarn {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.85; }
+}
+
+.expired-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.expired-tag {
+  font-size: 9px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.expired-desc {
+  margin: 0;
+  font-size: 9.5px;
+  line-height: 1.25;
+  color: #ffcccc;
+  font-weight: 500;
+}
+
+.expired-action-btn {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #ffd700 0%, #dfa010 100%);
+  color: #1a0805;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.45);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.expired-action-btn:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
+
+/* Diagonal Persistent Watermark Grid */
+.taklivo-diagonal-watermark-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 9985;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transform: rotate(-18deg) scale(1.25);
+  opacity: 0.12;
+}
+
+.watermark-pattern {
+  display: flex;
+  flex-direction: column;
+  gap: 85px;
+  width: 140%;
+  margin-left: -20%;
+}
+
+.watermark-pattern span {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(14px, 3.8vw, 22px);
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: #ff4d4d;
+  text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Expired styles for bottom floating banner */
+.taklivo-banner-expired {
+  border-color: rgba(255, 77, 77, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(255, 77, 77, 0.25) !important;
+}
+
+.expired-badge {
+  background: rgba(255, 77, 77, 0.2) !important;
+  border-color: rgba(255, 77, 77, 0.6) !important;
+  color: #ffcccc !important;
+}
+
+.expired-btn {
+  background: linear-gradient(135deg, #ff4d4d 0%, #b81414 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(255, 77, 77, 0.4) !important;
+}
+
+@media (max-width: 350px) {
+  .taklivo-expired-notice-bar {
+    padding: max(6px, env(safe-area-inset-top, 6px)) 9px 7px;
+    gap: 7px;
+  }
+  .expired-title {
+    font-size: 9.5px;
+  }
+  .expired-tag {
+    font-size: 8px;
+    padding: 1px 4px;
+  }
+  .expired-desc {
+    font-size: 8.5px;
+  }
+  .expired-action-btn {
+    font-size: 9.5px;
+    padding: 5px 9px;
+  }
+}

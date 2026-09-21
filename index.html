@@ -29,12 +29,38 @@
 </head>
 <body class="locked">
 
-  <!-- Watermark Pill (Unpaid / Demo Mode) -->
-  <div id="taklivoWatermark" class="taklivo-unpaid-watermark">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-    </svg>
-    TAKLIVO DEMO PREVIEW • 24H
+  <!-- Persistent Unpaid Top Notice Bar (24h Expired Mode) -->
+  <div id="taklivoExpiredNotice" class="taklivo-expired-notice-bar" role="alert">
+    <div class="expired-notice-content">
+      <div class="expired-badge-line">
+        <span class="expired-pulse-icon" aria-hidden="true">⚠️</span>
+        <span class="expired-title">BUYURTMA #12 TO‘LANMAGAN</span>
+        <span class="expired-tag">24 SOAT TUGADI</span>
+      </div>
+      <p class="expired-desc">
+        Ushbu taklifnoma to‘lanmagan. Mehmonlarga tarqatish uchun bot orqali to‘lovni tasdiqlang!
+      </p>
+    </div>
+    <a href="https://t.me/taklivo_bot" class="expired-action-btn" target="_blank" rel="noopener noreferrer">
+      <span>To‘lov qilish</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Fullsite Persistent Diagonal Watermark Grid (Unpaid / Expired Mode) -->
+  <div class="taklivo-diagonal-watermark-grid" aria-hidden="true">
+    <div class="watermark-pattern">
+      <span>TO‘LANMAGAN • TAKLIVO.UZ • 24H TUGADI</span>
+      <span>BUYURTMA #12 • TO‘LOV QILINMAGAN</span>
+      <span>TO‘LANMAGAN • TAKLIVO.UZ • 24H TUGADI</span>
+      <span>BUYURTMA #12 • TO‘LOV QILINMAGAN</span>
+      <span>TO‘LANMAGAN • TAKLIVO.UZ • 24H TUGADI</span>
+      <span>BUYURTMA #12 • TO‘LOV QILINMAGAN</span>
+      <span>TO‘LANMAGAN • TAKLIVO.UZ • 24H TUGADI</span>
+      <span>BUYURTMA #12 • TO‘LOV QILINMAGAN</span>
+    </div>
   </div>
 
   <!-- Background Soundtrack Audio (Bojalar - To'ylar muborak) -->
@@ -443,18 +469,20 @@
   <!-- ============================================================
        FLOATING DEMO BOTTOM BANNER (Unpaid Order #12)
        ============================================================ -->
-  <div id="taklivoBanner" class="taklivo-floating-banner">
+  <div id="taklivoBanner" class="taklivo-floating-banner taklivo-banner-expired">
     <div class="taklivo-banner-left">
       <span class="taklivo-banner-title">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dfc488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
         </svg>
-        DEMO-REJIMI
-        <span class="taklivo-banner-badge">BUYURTMA #12</span>
+        TO‘LOV QILINMAGAN
+        <span class="taklivo-banner-badge expired-badge">24 SOAT TUGADI</span>
       </span>
-      <span class="taklivo-banner-desc">Sayt oldindan ko‘rish rejimida. To‘lovdan so‘ng suv belgisi olib tashlanadi.</span>
+      <span class="taklivo-banner-desc">24 soatlik demo muddati tugadi. Mehmonlarga yuborish uchun botda to‘lovni tasdiqlang!</span>
     </div>
-    <a href="https://t.me/taklivo_bot" class="taklivo-banner-btn" target="_blank" rel="noopener noreferrer">Botda tasdiqlash</a>
+    <a href="https://t.me/taklivo_bot" class="taklivo-banner-btn expired-btn" target="_blank" rel="noopener noreferrer">To‘lov qilish</a>
   </div>
 
   <!-- JavaScript -->
